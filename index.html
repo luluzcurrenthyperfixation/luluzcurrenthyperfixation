@@ -5,113 +5,158 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hyperflix</title>
   <style>
-    .video-card {
-  background-color: #ffe4ec;
-  padding: 12px;
-  border-radius: 12px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.video-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 10px 20px rgba(255, 105, 180, 0.4);
-}
-
-.video-card video {
-  width: 100%;
-  border-radius: 8px;
-  transition: transform 0.3s ease;
-}
-
-.video-card:hover video {
-  transform: scale(1.03);
-}
     body {
-      margin: 0; font-family: Arial, sans-serif;
-      background-color: #fff0f6; color: #ff69b4;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff0f6;
+      color: #ff69b4;
     }
+
     header {
-      <div class="header-left">
-    <h1>🎀 Hyperflix</h1>
-  </div>
-
-  <form class="search-bar" onsubmit="event.preventDefault(); alert('Search not functional yet!');">
-    <input type="text" placeholder="Search kawaii videos..." />
-    <button type="submit">🔍</button>
-  </form>
-
-  <div class="header-right">
-    <button class="upload-btn">⬆️ Upload</button>
-  </div>
+      background: #fff;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      flex-wrap: wrap;
     }
-    header h1 {
-      margin: 0; font-size: 2.8em; color: #ff1493;
-    }
-    header p { margin: 5px 0; color: #d63384; }
 
-    /* Search bar */
+    .header-left h1 {
+      font-size: 2.2em;
+      margin: 0;
+      color: #ff1493;
+    }
+
     .search-bar {
-      margin-top: 15px; display: inline-flex;
+      display: flex;
+      flex-grow: 1;
+      justify-content: center;
+      margin: 10px 0;
+      max-width: 500px;
+      width: 100%;
     }
+
     .search-bar input {
-      padding: 8px 12px; border: none; border-radius: 20px 0 0 20px;
-      width: 200px; font-size: 1em; outline: none;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 20px 0 0 20px;
+      width: 70%;
+      font-size: 1em;
+      outline: none;
     }
+
     .search-bar button {
-      padding: 8px 12px; border: none; border-radius: 0 20px 20px 0;
-      background-color: #ff69b4; color: white; cursor: pointer;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 0 20px 20px 0;
+      background-color: #ff69b4;
+      color: white;
+      cursor: pointer;
+    }
+
+    .upload-btn {
+      background-color: #ffb6c1;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 15px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin-left: 10px;
     }
 
     .container {
-      padding: 20px; display: grid;
-      grid-template-columns: repeat(3, 1fr); gap: 20px;
-    }
-    .video-card {
-      background-color: #ffe4ec; padding: 12px;
-      border-radius: 12px; text-align: center;
-    }
-    video {
-      width: 100%; border-radius: 8px;
-    }
-    .video-title {
-      margin-top: 8px; font-size: 1.1em; color: #c71585;
-    }
-    .placeholder {
-      width: 100%; height: 160px; background: #ffd6ec;
-      border-radius: 8px; display: flex;
-      align-items: center; justify-content: center;
-      color: #ff69b4; font-size: 1.2em;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
     }
 
-    /* Tablet (2 columns) */
-    @media (max-width: 1024px) {
-      .container { grid-template-columns: repeat(2, 1fr); }
+    .video-card {
+      background-color: #ffe4ec;
+      padding: 12px;
+      border-radius: 12px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    /* Mobile (1 column) */
+
+    .video-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(255, 105, 180, 0.4);
+    }
+
+    .video-card video {
+      width: 100%;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .video-card:hover video {
+      transform: scale(1.03);
+    }
+
+    .video-title {
+      margin-top: 8px;
+      font-size: 1.1em;
+      color: #c71585;
+    }
+
+    .placeholder {
+      width: 100%;
+      height: 160px;
+      background: #ffd6ec;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ff69b4;
+      font-size: 1.2em;
+    }
+
+    /* Tablet */
+    @media (max-width: 1024px) {
+      .container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Mobile */
     @media (max-width: 600px) {
-      .container { grid-template-columns: 1fr; }
+      .container {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
+
   <!-- 🔐 Password protection -->
   <script>
     const allowed = prompt("🎟️ Hyperflix Access — Enter Password:");
     if (allowed !== "hyperflix123") {
-      alert("🚫 Access Denied."); window.location.href = "https://google.com";
+      alert("🚫 Access Denied.");
+      window.location.href = "https://google.com";
     }
   </script>
 
+  <!-- 🌸 Header -->
   <header>
-    <h1>🎬 Hyperflix</h1>
-    <p>your kawaii streaming site 💖</p>
-    <form class="search-bar" onsubmit="event.preventDefault(); alert('Search isn’t live yet!');">
-      <input type="text" placeholder="Search videos..." />
+    <div class="header-left">
+      <h1>🎀 Hyperflix</h1>
+    </div>
+
+    <form class="search-bar" onsubmit="event.preventDefault(); alert('Search not live yet!');">
+      <input type="text" placeholder="Search kawaii videos..." />
       <button type="submit">🔍</button>
     </form>
+
+    <div class="header-right">
+      <button class="upload-btn">⬆️ Upload</button>
+    </div>
   </header>
 
+  <!-- 🎥 Video Grid -->
   <div class="container">
     <div class="video-card">
       <video controls>
@@ -120,6 +165,7 @@
       </video>
       <div class="video-title">🍓 My First Video</div>
     </div>
+
     <div class="video-card">
       <video controls>
         <source src="videos/sample2.mp4" type="video/mp4" />
@@ -127,10 +173,12 @@
       </video>
       <div class="video-title">🍰 Cute Vlog Ep. 1</div>
     </div>
+
     <div class="video-card">
       <div class="placeholder">📁 Empty Slot</div>
       <div class="video-title">✨ Coming Soon</div>
     </div>
   </div>
+
 </body>
 </html>
