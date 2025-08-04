@@ -6,13 +6,6 @@
   <title>Hyperflix</title>
   <style>
     body {
-      <script>
-    const allowed = prompt("🎟️ Hyperflix Access — Enter Password:");
-    if (allowed !== "hyperflix123") {
-      alert("🚫 Access Denied.");
-      window.location.href = "https://google.com";
-    }
-  </script>
       margin: 0;
       font-family: Arial, sans-serif;
       background-color: #111;
@@ -52,6 +45,15 @@
   </style>
 </head>
 <body>
+
+  <!-- 🔐 Password Protection -->
+  <script>
+    const allowed = prompt("🎟️ Hyperflix Access — Enter Password:");
+    if (allowed !== "hyperflix123") {
+      alert("🚫 Access Denied.");
+      window.location.href = "https://google.com";
+    }
+  </script>
 
   <header>
     <h1>🎬 Hyperflix</h1>
