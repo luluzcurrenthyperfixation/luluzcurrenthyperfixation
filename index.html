@@ -13,22 +13,23 @@
     }
 
     header {
-      background-color: #fff;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 10px 20px;
-      border-bottom: 2px solid #ffd6ec;
+      justify-content: space-between;
+      background-color: #ffffff;
+      padding: 15px 20px;
+      border-bottom: 2px solid #ffb6d5;
       position: sticky;
       top: 0;
       z-index: 1000;
     }
 
-    header h1 {
-      margin: 0;
+    .logo {
       font-size: 2em;
-      color: #ff1493;
+      font-weight: bold;
+      color: #ff69b4;
       cursor: pointer;
+      text-decoration: none;
     }
 
     .search-bar {
@@ -38,21 +39,24 @@
 
     .search-bar input {
       padding: 8px 12px;
-      border: 2px solid #ff69b4;
+      border: 2px solid #ffb6d5;
+      border-right: none;
       border-radius: 20px 0 0 20px;
       outline: none;
       font-size: 1em;
-      width: 200px;
+      background-color: #fff;
+      color: #ff69b4;
     }
 
     .search-bar button {
       padding: 8px 12px;
+      background-color: #ff69b4;
       border: 2px solid #ff69b4;
       border-left: none;
       border-radius: 0 20px 20px 0;
-      background-color: #ff69b4;
-      color: white;
       cursor: pointer;
+      color: white;
+      font-size: 1em;
     }
 
     .container {
@@ -72,21 +76,20 @@
     }
 
     .video-card:hover {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 8px 16px rgba(255, 105, 180, 0.3);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(255, 105, 180, 0.4);
     }
 
     .thumbnail-placeholder {
       width: 100%;
-      height: 160px;
+      height: 168px;
       background: #ffd6ec;
-      border-radius: 12px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1em;
       color: #ff69b4;
-      transition: all 0.3s ease;
+      font-size: 1.2em;
     }
 
     .video-title {
@@ -95,12 +98,14 @@
       color: #c71585;
     }
 
+    /* Tablet */
     @media (max-width: 1024px) {
       .container {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
+    /* Mobile */
     @media (max-width: 600px) {
       .container {
         grid-template-columns: 1fr;
@@ -109,7 +114,8 @@
   </style>
 </head>
 <body>
-  <!-- 🔐 Password Protection -->
+
+  <!-- 🔐 Password protection -->
   <script>
     const allowed = prompt("🎟️ Hyperflix Access — Enter Password:");
     if (allowed !== "hyperflix123") {
@@ -118,50 +124,64 @@
     }
   </script>
 
+  <!-- Header -->
   <header>
-    <h1 onclick="location.reload()">🎬 Hyperflix</h1>
-    <form class="search-bar" onsubmit="event.preventDefault(); alert('Search not live yet!')">
-      <input type="text" placeholder="Search kawaii videos..." />
+    <a class="logo" href="#">🎬 Hyperflix</a>
+
+    <form class="search-bar" onsubmit="event.preventDefault();">
+      <input type="text" id="searchInput" placeholder="Search kawaii videos..." oninput="filterVideos()" />
       <button type="submit">🔍</button>
     </form>
   </header>
 
+  <!-- Main Video Grid -->
   <div class="container">
-    <!-- Thumbnail 1 -->
-    <a class="video-card" href="video.html?id=sample1">
+    <a class="video-card" href="video.html?id=sample1" data-title="my first video">
       <div class="thumbnail-placeholder">🎀 Video 1 Thumbnail</div>
       <div class="video-title">🍓 My First Video</div>
     </a>
 
-    <!-- Thumbnail 2 -->
-    <a class="video-card" href="video.html?id=sample2">
-      <div class="thumbnail-placeholder">🍰 Video 2 Thumbnail</div>
+    <a class="video-card" href="video.html?id=sample2" data-title="cute vlog ep. 1">
+      <div class="thumbnail-placeholder">🎀 Video 2 Thumbnail</div>
       <div class="video-title">🍰 Cute Vlog Ep. 1</div>
     </a>
 
-    <!-- Placeholder 3 -->
-    <a class="video-card" href="#">
+    <div class="video-card" data-title="coming soon">
       <div class="thumbnail-placeholder">📁 Empty Slot</div>
       <div class="video-title">✨ Coming Soon</div>
-    </a>
+    </div>
 
-    <!-- Placeholder 4 -->
-    <a class="video-card" href="#">
+    <div class="video-card" data-title="coming soon">
       <div class="thumbnail-placeholder">📁 Empty Slot</div>
       <div class="video-title">✨ Coming Soon</div>
-    </a>
+    </div>
 
-    <!-- Placeholder 5 -->
-    <a class="video-card" href="#">
+    <div class="video-card" data-title="coming soon">
       <div class="thumbnail-placeholder">📁 Empty Slot</div>
       <div class="video-title">✨ Coming Soon</div>
-    </a>
+    </div>
 
-    <!-- Placeholder 6 -->
-    <a class="video-card" href="#">
+    <div class="video-card" data-title="coming soon">
       <div class="thumbnail-placeholder">📁 Empty Slot</div>
       <div class="video-title">✨ Coming Soon</div>
-    </a>
+    </div>
   </div>
+
+  <!-- Search Script -->
+  <script>
+    function filterVideos() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const cards = document.querySelectorAll(".video-card");
+
+      cards.forEach(card => {
+        const title = card.getAttribute("data-title");
+        if (title && title.includes(input)) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+  </script>
 </body>
 </html>
