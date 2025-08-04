@@ -1,10 +1,67 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Hyperflix</title>
-  </head>
-  <body>
-    <h1>🎬 Welcome to Hyperflix!</h1>
-    <p>This is your custom video site!</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hyperflix</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #fff;
+    }
+    header {
+      background-color: #222;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: #e50914;
+    }
+    .container {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .video-card {
+      background-color: #1c1c1c;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #000;
+    }
+    video {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .video-title {
+      margin-top: 10px;
+      font-size: 1.1em;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🎬 Hyperflix</h1>
+    <p>Your personal streaming site</p>
+  </header>
+
+  <div class="container">
+    <div class="video-card">
+      <video controls>
+        <source src="videos/sample1.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="video-title">My First Video</div>
+    </div>
+
+    <!-- Add more video-card divs below to add more videos -->
+  </div>
+
+</body>
 </html>
