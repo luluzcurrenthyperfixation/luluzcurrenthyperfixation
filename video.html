@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hyperflix Video</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff0f6;
+      color: #ff69b4;
+    }
+    header {
+      background-color: #fff;
+      padding: 15px 30px;
+      border-bottom: 1px solid #ffd6ec;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+      color: #ff1493;
+      cursor: pointer;
+    }
+    .video-container {
+      padding: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    video {
+      width: 100%;
+      border-radius: 12px;
+      background-color: #000;
+    }
+    .video-title {
+      font-size: 1.5em;
+      margin-top: 15px;
+      color: #d63384;
+    }
+    .video-description {
+      margin-top: 10px;
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1 onclick="location.href='index.html'">🎀 Hyperflix</h1>
+  </header>
+
+  <div class="video-container">
+    <video id="videoPlayer" controls></video>
+    <div class="video-title" id="videoTitle">Loading...</div>
+    <div class="video-description" id="videoDescription">Please wait...</div>
+  </div>
+
+  <script src="videos.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const videoId = params.get("id");
+
+    const videoData = videos[videoId];
+
+    if (videoData) {
+      document.getElementById("videoPlayer").src = videoData.src;
+      document.getElementById("videoTitle").textContent = videoData.title;
+      document.getElementById("videoDescription").textContent = videoData.description;
+    } else {
+      document.getElementById("videoTitle").textContent = "Video not found 💔";
+      document.getElementById("videoDescription").textContent = "The video ID is missing or incorrect.";
+      document.getElementById("videoPlayer").remove();
+    }
+  </script>
+
+</body>
+</html>
