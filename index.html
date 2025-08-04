@@ -16,17 +16,21 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 20px;
       background-color: #ffe4ec;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 10px 20px;
       position: sticky;
       top: 0;
       z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
     .header-left h1 {
       margin: 0;
       font-size: 2em;
+    }
+
+    .header-left h1 a {
+      text-decoration: none;
       color: #ff1493;
     }
 
@@ -66,10 +70,11 @@
       border-radius: 12px;
       text-align: center;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
     }
 
     .video-card:hover {
-      transform: translateY(-8px) scale(1.02);
+      transform: translateY(-10px) scale(1.02);
       box-shadow: 0 10px 20px rgba(255, 105, 180, 0.4);
     }
 
@@ -91,14 +96,14 @@
       color: #c71585;
     }
 
-    /* Tablet (2 columns) */
+    /* Tablet */
     @media (max-width: 1024px) {
       .container {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    /* Mobile (1 column) */
+    /* Mobile */
     @media (max-width: 600px) {
       .container {
         grid-template-columns: 1fr;
@@ -108,7 +113,7 @@
 </head>
 <body>
 
-  <!-- 🔐 Password Protection -->
+  <!-- 🔐 Password protection -->
   <script>
     const allowed = prompt("🎟️ Hyperflix Access — Enter Password:");
     if (allowed !== "hyperflix123") {
@@ -117,18 +122,18 @@
     }
   </script>
 
-  <!-- 🎀 Header -->
+  <!-- 🧷 Header -->
   <header>
     <div class="header-left">
-      <h1>🎬 Hyperflix</h1>
+      <h1><a href="/">🎬 Hyperflix</a></h1>
     </div>
-    <form class="search-bar" onsubmit="event.preventDefault(); alert('Search not functional yet!');">
+    <form class="search-bar" onsubmit="event.preventDefault(); alert('Search isn’t live yet!');">
       <input type="text" placeholder="Search kawaii videos..." />
       <button type="submit">🔍</button>
     </form>
   </header>
 
-  <!-- 📁 Video Grid -->
+  <!-- 🎞️ Video Grid -->
   <div class="container">
     <div class="video-card">
       <div class="placeholder">📁 Empty Slot</div>
