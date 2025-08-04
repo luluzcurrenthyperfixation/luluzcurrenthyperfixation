@@ -16,15 +16,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 20px;
+      padding: 10px 20px;
       background-color: #ffe4ec;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 1000;
     }
 
-    header h1 {
+    .header-left h1 {
       margin: 0;
       font-size: 2em;
       color: #ff1493;
@@ -54,10 +54,10 @@
     }
 
     .container {
-      padding: 30px;
+      padding: 20px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
+      gap: 20px;
     }
 
     .video-card {
@@ -65,35 +65,40 @@
       padding: 12px;
       border-radius: 12px;
       text-align: center;
-      text-decoration: none;
-      color: inherit;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .video-card:hover {
-      transform: translateY(-10px) scale(1.02);
+      transform: translateY(-8px) scale(1.02);
       box-shadow: 0 10px 20px rgba(255, 105, 180, 0.4);
     }
 
-    .video-card img {
+    .placeholder {
       width: 100%;
-      border-radius: 10px;
+      height: 160px;
+      background: #ffd6ec;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ff69b4;
+      font-size: 1.2em;
     }
 
     .video-title {
-      margin-top: 10px;
+      margin-top: 8px;
       font-size: 1.1em;
       color: #c71585;
     }
 
-    /* Tablet */
+    /* Tablet (2 columns) */
     @media (max-width: 1024px) {
       .container {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    /* Mobile */
+    /* Mobile (1 column) */
     @media (max-width: 600px) {
       .container {
         grid-template-columns: 1fr;
@@ -103,7 +108,7 @@
 </head>
 <body>
 
-  <!-- 🔐 Password protection -->
+  <!-- 🔐 Password Protection -->
   <script>
     const allowed = prompt("🎟️ Hyperflix Access — Enter Password:");
     if (allowed !== "hyperflix123") {
@@ -112,32 +117,41 @@
     }
   </script>
 
+  <!-- 🎀 Header -->
   <header>
-    <h1>🎬 Hyperflix</h1>
+    <div class="header-left">
+      <h1>🎬 Hyperflix</h1>
+    </div>
     <form class="search-bar" onsubmit="event.preventDefault(); alert('Search not functional yet!');">
       <input type="text" placeholder="Search kawaii videos..." />
       <button type="submit">🔍</button>
     </form>
   </header>
 
+  <!-- 📁 Video Grid -->
   <div class="container">
-    <!-- Video Thumbnail 1 -->
-    <a href="video1.html" class="video-card">
-      <img src="thumbnails/thumb1.jpg" alt="My First Video Thumbnail" />
-      <div class="video-title">🍓 My First Video</div>
-    </a>
-
-    <!-- Video Thumbnail 2 -->
-    <a href="video2.html" class="video-card">
-      <img src="thumbnails/thumb2.jpg" alt="Cute Vlog Ep. 1 Thumbnail" />
-      <div class="video-title">🍰 Cute Vlog Ep. 1</div>
-    </a>
-
-    <!-- Empty Slot -->
     <div class="video-card">
-      <div style="width: 100%; height: 160px; background: #ffd6ec; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #ff69b4; font-size: 1.2em;">
-        📁 Empty Slot
-      </div>
+      <div class="placeholder">📁 Empty Slot</div>
+      <div class="video-title">✨ Coming Soon</div>
+    </div>
+    <div class="video-card">
+      <div class="placeholder">📁 Empty Slot</div>
+      <div class="video-title">✨ Coming Soon</div>
+    </div>
+    <div class="video-card">
+      <div class="placeholder">📁 Empty Slot</div>
+      <div class="video-title">✨ Coming Soon</div>
+    </div>
+    <div class="video-card">
+      <div class="placeholder">📁 Empty Slot</div>
+      <div class="video-title">✨ Coming Soon</div>
+    </div>
+    <div class="video-card">
+      <div class="placeholder">📁 Empty Slot</div>
+      <div class="video-title">✨ Coming Soon</div>
+    </div>
+    <div class="video-card">
+      <div class="placeholder">📁 Empty Slot</div>
       <div class="video-title">✨ Coming Soon</div>
     </div>
   </div>
