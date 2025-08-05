@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hyperflix Search</title>
+  <title>Search - Hyperflix</title>
   <style>
     body {
       margin: 0;
@@ -32,6 +32,8 @@
 
     .search-bar {
       display: flex;
+      max-width: 400px;
+      width: 100%;
     }
 
     .search-bar input {
@@ -40,7 +42,7 @@
       border: 1px solid #ccc;
       border-radius: 20px 0 0 20px;
       outline: none;
-      width: 250px;
+      width: 100%;
     }
 
     .search-bar button {
@@ -55,29 +57,31 @@
 
     .results-container {
       padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
     }
 
     .search-result {
       display: flex;
-      margin-bottom: 20px;
-      gap: 15px;
-      background-color: #ffe4ec;
-      padding: 10px;
-      border-radius: 10px;
-      transition: transform 0.2s;
+      margin-bottom: 25px;
+      gap: 16px;
+      cursor: pointer;
     }
 
-    .search-result:hover {
-      transform: scale(1.01);
+    .search-result:hover .thumbnail {
+      transform: scale(1.03);
+      box-shadow: 0 4px 12px rgba(255, 105, 180, 0.2);
     }
 
     .thumbnail {
-      width: 200px;
-      height: 120px;
-      background-color: #ddd;
-      border-radius: 8px;
+      width: 320px;
+      height: 180px;
+      background-color: #ffe4ec;
       background-size: cover;
       background-position: center;
+      border-radius: 12px;
+      transition: 0.3s ease;
+      flex-shrink: 0;
     }
 
     .result-info {
@@ -85,7 +89,7 @@
     }
 
     .result-info h3 {
-      margin: 0 0 8px;
+      margin: 0 0 10px;
       font-size: 1.2em;
       color: #c71585;
     }
@@ -94,6 +98,7 @@
       margin: 0;
       font-size: 0.95em;
       color: #555;
+      line-height: 1.4em;
     }
 
     @media (max-width: 768px) {
@@ -104,7 +109,7 @@
 
       .thumbnail {
         width: 100%;
-        height: 180px;
+        height: 200px;
       }
 
       .result-info {
@@ -130,9 +135,24 @@
   const query = params.get("q");
 
   const videoDatabase = [
-    { title: "🍓 My First Video", id: "sample1", description: "This is your first uploaded video!", thumbnail: "thumbnails/sample1.jpg" },
-    { title: "🍰 Cute Vlog Ep. 1", id: "sample2", description: "A cute day in the life vlog!", thumbnail: "thumbnails/sample2.jpg" },
-    { title: "✨ Coming Soon", id: "empty", description: "Stay tuned for more adorable content!", thumbnail: "thumbnails/placeholder.jpg" },
+    {
+      title: "🍓 My First Video",
+      id: "sample1",
+      description: "A cute first upload about strawberries and sparkles!",
+      thumbnail: "thumbnails/sample1.jpg"
+    },
+    {
+      title: "🍰 Cute Vlog Ep. 1",
+      id: "sample2",
+      description: "Join me on a day in my pink kawaii life 💖",
+      thumbnail: "thumbnails/sample2.jpg"
+    },
+    {
+      title: "✨ Coming Soon",
+      id: "empty",
+      description: "More adorable videos are on the way!",
+      thumbnail: "thumbnails/placeholder.jpg"
+    }
   ];
 
   function renderResults(query) {
